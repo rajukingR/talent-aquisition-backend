@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import db from './config/db.js';
 import parentRouter from './routes/parentRouter.js';
+import userDetailsRoutes from "../src/routes/userDetailsRoutes.js";
 
 
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(helmet()); // Security
 
 
 app.use('/api', parentRouter)
+app.use("/api/users", userDetailsRoutes); // API base path
 
 //** Database connection check **//
 db.authenticate()
