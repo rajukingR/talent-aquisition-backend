@@ -17,7 +17,8 @@ app.use(cors()); // Enable CORS
 app.use(morgan('dev')); // Logging
 app.use(helmet()); // Security
 
-//** Routes **//
+
+
 app.use('/api', parentRouter)
 
 //** Database connection check **//
