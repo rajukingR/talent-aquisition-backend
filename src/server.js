@@ -7,22 +7,30 @@ import db from './config/db.js';
 import parentRouter from './routes/parentRouter.js';
 import userDetailsRoutes from "../src/routes/userDetailsRoutes.js";
 import roleRoutes from "../src/routes/roleRoutes.js";
+import experienceRoutes  from "../src/routes/experienceRoutes.js";
+import departmentRoutes from "../src/routes/departmentRoutes.js";
+import branchRoutes from "../src/routes/branchRoutes.js";
+import vendorRoutes from "../src/routes/vendorRoutes.js"; 
 
 dotenv.config();
 
 const app = express();
 
 //**  Middlewares **//
-app.use(express.json()); // Parse JSON
-app.use(cors()); // Enable CORS
-app.use(morgan('dev')); // Logging
-app.use(helmet()); // Security
+app.use(express.json()); 
+app.use(cors()); 
+app.use(morgan('dev'));
+app.use(helmet());
 
 
 
 app.use('/api', parentRouter)
-app.use("/api/users", userDetailsRoutes); // API base path
-app.use("/api/roles", roleRoutes); // API base path
+app.use("/api/users", userDetailsRoutes); 
+app.use("/api/roles", roleRoutes);
+app.use("/api/experience-range", experienceRoutes); 
+app.use("/api/department", departmentRoutes);  
+app.use("/api/branch", branchRoutes); 
+app.use("/api/vendors", vendorRoutes);  
 
 //** Database connection check **//
 db.authenticate()

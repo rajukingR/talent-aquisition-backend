@@ -60,6 +60,11 @@ export default (sequelize, DataTypes) => {
             isEmail: true,
           },
         },
+        phone_number: {  
+          type: DataTypes.STRING(20),
+          allowNull: false,
+          unique: true
+      },
         pincode: {
           type: DataTypes.STRING(20),
           allowNull: false,

@@ -1,18 +1,30 @@
 import db from "../models/index.js";
+import { Op } from "sequelize";
 
 const Role = db.Role;
 
 // Create a new role
 export const createRole = async (req, res) => {
   try {
-    const { tenant_id, name, department, description, active_status } = req.body;
+    const { name, department, description, active_status } = req.body;
 
+    // Check if role name already exists within the same tenant
+    const existingRole = await Role.findOne({
+      where: { name },
+    });
+
+    if (existingRole) {
+      return res.status(400).json({ message: "Role name already exists for this tenant. Please choose a different name." });
+    }
+
+    // Create role with timestamps
     const role = await Role.create({
-      tenant_id,
       name,
       department,
       description,
       active_status,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
 
     res.status(201).json({ message: "Role created successfully", role });
@@ -52,18 +64,30 @@ export const getRoleById = async (req, res) => {
 export const updateRole = async (req, res) => {
   try {
     const { id } = req.params;
-    const { tenant_id, name, department, description, active_status } = req.body;
+    const { name, department, description, active_status } = req.body;
 
     const role = await Role.findByPk(id);
-
     if (!role) return res.status(404).json({ message: "Role not found" });
 
+    // Check if another role in the same tenant has the same name
+    const existingRole = await Role.findOne({
+      where: {
+        name,
+        id: { [Op.ne]: id }, // Exclude current role
+      },
+    });
+
+    if (existingRole) {
+      return res.status(400).json({ message: "Role name already exists for this tenant. Please choose a different name." });
+    }
+
+    // Update role with timestamps
     await role.update({
-      tenant_id,
       name,
       department,
       description,
       active_status,
+      updatedAt: new Date(),
     });
 
     res.status(200).json({ message: "Role updated successfully", role });
