@@ -1,0 +1,18 @@
+import express from "express";
+import {
+  createAccountDetail,
+  getAllAccountDetails,
+  getAccountDetailById,
+  updateAccountDetail,
+  deleteAccountDetail,
+} from "../controllers/accountDetailsController.js";
+
+const router = express.Router();
+
+router.post("/create", createAccountDetail);
+router.get("/", getAllAccountDetails);
+router.get("/:id", getAccountDetailById);
+router.put("/:id", updateAccountDetail);
+router.delete("/:id", deleteAccountDetail);
+
+export default router;

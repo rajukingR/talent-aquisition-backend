@@ -11,6 +11,11 @@ import experienceRoutes  from "../src/routes/experienceRoutes.js";
 import departmentRoutes from "../src/routes/departmentRoutes.js";
 import branchRoutes from "../src/routes/branchRoutes.js";
 import vendorRoutes from "../src/routes/vendorRoutes.js"; 
+import invoiceDetailsRoutes from "../src/routes/invoiceDetailsRoutes.js"; 
+import accountDetailsRoutes from "../src/routes/accountDetailsRoutes.js"; 
+
+import clientDetailsRoutes from "../src/routes/clientDetailsRoutes.js"; 
+
 
 dotenv.config();
 
@@ -31,6 +36,9 @@ app.use("/api/experience-range", experienceRoutes);
 app.use("/api/department", departmentRoutes);  
 app.use("/api/branch", branchRoutes); 
 app.use("/api/vendors", vendorRoutes);  
+app.use("/api/invoice-details", invoiceDetailsRoutes);  
+app.use("/api/account-details", accountDetailsRoutes);  
+app.use("/api/client-details", clientDetailsRoutes);  
 
 //** Database connection check **//
 db.authenticate()

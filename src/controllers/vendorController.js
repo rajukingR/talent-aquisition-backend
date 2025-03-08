@@ -22,14 +22,7 @@ export const createVendor = async (req, res) => {
       comments,
     } = req.body;
 
-    // Check if vendor_name already exists
-    const existingVendor = await Vendor.findOne({ where: { vendor_name } });
-
-    if (existingVendor) {
-      return res.status(400).json({
-        message: "Vendor name already exists. Please choose a different name.",
-      });
-    }
+    
 
     // Check if phone_number or email already exists
     const existingPhone = await Vendor.findOne({ where: { phone_number } });

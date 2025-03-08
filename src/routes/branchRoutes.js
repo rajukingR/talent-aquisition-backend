@@ -6,11 +6,12 @@ import {
   updateBranch,
   deleteBranch,
 } from "../controllers/branchController.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
 router.post("/create", createBranch);
-router.get("/", getAllBranches);
+router.get("/",authMiddleware, getAllBranches);
 router.get("/:id", getBranchById);
 router.put("/:id", updateBranch);
 router.delete("/:id", deleteBranch);

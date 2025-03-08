@@ -54,12 +54,12 @@ export const signin = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user.id, tenant_id: user.tenant_id, role_id: user.role_id, email: user.email },
+      { id: user.id, email: user.email },
       process.env.JWT_SECRET,
       { expiresIn: '24h' }
     );
 
-    res.status(200).json({ message: 'Signin successful', token, user: { id: user.id, email: user.email, role_id: user.role_id } });
+    res.status(200).json({ message: 'Signin successful', token, user: { id: user.id, email: user.email,} });
 
   } catch (error) {
     res.status(500).json({ message: 'Error signing in', error: error.message });
