@@ -12,7 +12,7 @@ import authMiddleware from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.post("/create", createInvoice);
-router.get("/",authMiddleware, getAllInvoices);
+router.get("/", getAllInvoices);
 router.get("/:id", getInvoiceById);
 router.put("/:id", updateInvoice);
 router.delete("/:id", deleteInvoice);

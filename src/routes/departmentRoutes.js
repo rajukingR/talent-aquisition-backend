@@ -12,7 +12,7 @@ import authMiddleware from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.post('/create', createDepartment);
-router.get('/',authMiddleware, getAllDepartments); 
+router.get('/', getAllDepartments); 
 router.get('/:id', getDepartmentById); 
 router.put('/:id', updateDepartment); 
 router.delete('/:id', deleteDepartment);
