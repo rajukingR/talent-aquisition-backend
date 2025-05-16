@@ -2,15 +2,33 @@ import db from "../models/index.js";
 const JobTitle = db.JobTitle;
 
 // Create a new job
+// Create a new job
+
+// Create a new job
 export const createJob = async (req, res) => {
   try {
     const { job_title, job_description, active_status } = req.body;
-    const job = await JobTitle.create({ job_title, job_description, active_status });
+
+    // Validate input data
+    if (!job_title) {
+      return res.status(400).json({ message: "Job title is required" });
+    }
+
+    // Create the job entry in the database
+    const job = await JobTitle.create({
+      job_title,
+      job_description,
+      active_status,
+    });
+
+    // Return the created job
     res.status(201).json(job);
   } catch (error) {
-    res.status(500).json({ message: "Error creating job", error });
+    console.error("Error creating job:", error); // Log error for debugging
+    res.status(500).json({ message: "Error creating job", error: error.message });
   }
 };
+
 
 // Get all jobs
 export const getAllJobs = async (req, res) => {
