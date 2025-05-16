@@ -13,9 +13,11 @@ import branchRoutes from "../src/routes/branchRoutes.js";
 import vendorRoutes from "../src/routes/vendorRoutes.js"; 
 import invoiceDetailsRoutes from "../src/routes/invoiceDetailsRoutes.js"; 
 import accountDetailsRoutes from "../src/routes/accountDetailsRoutes.js"; 
-
 import clientDetailsRoutes from "../src/routes/clientDetailsRoutes.js"; 
-
+import workLayoutRoutes from "./routes/workLayoutRoutes.js";
+import revenueModelRoutes from "./routes/revenueModelRoutes.js";
+import jobRoutes from "./routes/jobRoutes.js";
+import industryroutes from  "./routes/industryroutes.js";
 
 dotenv.config();
 
@@ -28,7 +30,6 @@ app.use(morgan('dev'));
 app.use(helmet());
 
 
-
 app.use('/api', parentRouter)
 app.use("/api/users", userDetailsRoutes); 
 app.use("/api/roles", roleRoutes);
@@ -39,8 +40,12 @@ app.use("/api/vendors", vendorRoutes);
 app.use("/api/invoice-details", invoiceDetailsRoutes);  
 app.use("/api/account-details", accountDetailsRoutes);  
 app.use("/api/client-details", clientDetailsRoutes);  
+app.use("/api/work-layouts", workLayoutRoutes);
+app.use("/api/revenue-model", revenueModelRoutes);
+app.use("/api/job-title", jobRoutes);
+app.use("/api/industries", industryroutes);
 
-//** Database connection check **//
+
 db.authenticate()
   .then(() => console.log('Database connected successfully'))
   .catch(err => console.log('Database connection failed:', err));
