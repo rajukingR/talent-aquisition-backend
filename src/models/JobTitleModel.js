@@ -1,57 +1,34 @@
 export default (sequelize, DataTypes) => {
-  const Industry = sequelize.define("Industry", {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
+  const JobTitle = sequelize.define(
+    "JobTitle",
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      job_title: {
+        type: DataTypes.STRING(255), // Adjusted length to 255 as per the table schema
+        allowNull: false, // job_title is required
+      },
+      job_description: {
+        type: DataTypes.TEXT, // Matching the `TEXT` type as per the schema
+        allowNull: true, // job_description is optional
+      },
+      active_status: {
+        type: DataTypes.TINYINT(1), // Matching the tinyint(1) type for active_status
+        defaultValue: 1, // Default value of 1 (active) as in the table
+      },
+      created_at: {
+        type: DataTypes.DATE, // Using DATE instead of TIMESTAMP
+        defaultValue: DataTypes.NOW, // Default to the current time
+      },
     },
-    industry_name: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: "Industry name cannot be empty"
-        },
-        len: {
-          args: [1, 255],
-          msg: "Industry name must be between 1-255 characters"
-        }
-      }
-    },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-      validate: {
-        len: {
-          args: [0, 65535],
-          msg: "Description too long"
-        }
-      }
-    },
-    is_active: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
-      set(value) {
-        this.setDataValue('is_active', !!value);
-      }
-    },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW, // Uses Sequelize's built-in 'NOW' for the default
-    },
-    updated_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW, // Uses Sequelize's built-in 'NOW' for the default
-      onUpdate: DataTypes.NOW, // Automatically updates on modification
+    {
+      tableName: "jobs", // Matching the table name to 'jobs'
+      timestamps: false, // Since created_at is manually handled, we disable automatic timestamps
     }
-  }, {
-    tableName: "industries",
-    timestamps: false, // Disable automatic Sequelize timestamps management
-    underscored: true, // Converts camelCase to snake_case
-  });
+  );
 
-  return Industry;
+  return JobTitle;
 };
