@@ -30,6 +30,12 @@ import interviewNameRoutes from "./routes/interviewName.routes.js";
 import skillsAddRoutes from "./routes/skillsAddRoutes.js";
 import revenueModelRoutes from "./routes/revenueModelRoutes.js"; // Import the routes
 import candidateStatusRoutes from "./routes/CandidateStatusRoutes.js";
+import quotationsRoutes from "./routes/quotationsRoutes.js";
+import orderDetailsRoutes from "./routes/orderDetailsRoutes.js";
+import resumeBankRoutes from "./routes/resumeBankRoutes.js";
+import candidateDetailsRoutes from "./routes/candidateDetailsRoutes.js";
+
+import userProfilesRoutes from "./routes/userProfilesRoutes.js";
 
 dotenv.config();
 
@@ -68,6 +74,11 @@ app.use("/api/interview-names", interviewNameRoutes);
 app.use("/api/skills-add", skillsAddRoutes);
 app.use("/api/revenue-models", revenueModelRoutes);
 app.use("/api/candidate-status", candidateStatusRoutes);
+app.use("/api/quotations-details", quotationsRoutes);
+app.use("/api/orders-details", orderDetailsRoutes);
+app.use("/api/resume-bank", resumeBankRoutes);
+app.use("/api/candidate-details", candidateDetailsRoutes);
+app.use("/api/user-profile", userProfilesRoutes);
 
 db.authenticate()
   .then(() => console.log('Database connected successfully'))
