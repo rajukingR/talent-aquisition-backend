@@ -9,6 +9,8 @@ import {
   
 import authMiddleware from "../middlewares/authMiddleware.js";
 
+import upload from "../middlewares/multer.js";
+
 const router = express.Router();
 
 router.post("/create", createCandidate  );

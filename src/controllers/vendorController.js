@@ -7,7 +7,6 @@ const Vendor = db.Vendor;
 export const createVendor = async (req, res) => {
   try {
     const {
-      vendor_id,
       vendor_name,
       vendor_owner,
       contact_name,
@@ -22,7 +21,8 @@ export const createVendor = async (req, res) => {
       comments,
     } = req.body;
 
-    
+    // Auto-generate random 8-digit vendor ID
+    const vendor_id = Math.floor(10000000 + Math.random() * 90000000).toString();
 
     // Check if phone_number or email already exists
     const existingPhone = await Vendor.findOne({ where: { phone_number } });
@@ -40,7 +40,7 @@ export const createVendor = async (req, res) => {
       });
     }
 
-    // Create new vendor if name, phone, and email are unique
+    // Create new vendor
     const vendor = await Vendor.create({
       vendor_id,
       vendor_name,
