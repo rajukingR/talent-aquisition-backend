@@ -80,6 +80,8 @@ app.use("/api/resume-bank", resumeBankRoutes);
 app.use("/api/candidate-details", candidateDetailsRoutes);
 app.use("/api/user-profile", userProfilesRoutes);
 
+//raghu
+
 db.authenticate()
   .then(() => console.log('Database connected successfully'))
   .catch(err => console.log('Database connection failed:', err));
