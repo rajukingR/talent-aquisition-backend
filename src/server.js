@@ -20,15 +20,15 @@ import industryroutes from  "./routes/industryroutes.js";
 import benchStatusRoutes from "./routes/BenchStatusRoutes.js";
 import rateTypeRoutes from "./routes/rateType.routes.js";
 import currencyRoutes from "./routes/currencyRoutes.js";
-import offBoardingReasonRoutes from './routes/OffBoardingReasonRoutes.js';  // Adjust the import path as needed
+import offBoardingReasonRoutes from './routes/OffBoardingReasonRoutes.js';  
 import availabilityStatusRoutes from "./routes/availabilityStatusRoutes.js";
 import overallStatusRoutes from './routes/overallStatusRoutes.js';
 import sourceRoutes from "./routes/sourceRoutes.js";
 import languageProficiencyRoutes from "./routes/languageProficiencyRoutes.js";
-import interviewStatusRoutes from './routes/interviewStatusRoutes.js';  // Import the interview status routes
+import interviewStatusRoutes from './routes/interviewStatusRoutes.js';  
 import interviewNameRoutes from "./routes/interviewName.routes.js";
 import skillsAddRoutes from "./routes/skillsAddRoutes.js";
-import revenueModelRoutes from "./routes/revenueModelRoutes.js"; // Import the routes
+import revenueModelRoutes from "./routes/revenueModelRoutes.js";
 import candidateStatusRoutes from "./routes/CandidateStatusRoutes.js";
 import quotationsRoutes from "./routes/quotationsRoutes.js";
 import orderDetailsRoutes from "./routes/orderDetailsRoutes.js";
